@@ -1,0 +1,257 @@
+.card {
+  position: relative;
+  border-radius: 20px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+
+/* Variants */
+.default {
+  background: var(--color-surface);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.glass::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.05) 50%,
+    rgba(255, 255, 255, 0.02) 100%
+  );
+  pointer-events: none;
+}
+
+.elevated {
+  background: var(--color-surface);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+}
+
+.bordered {
+  background: var(--color-surface);
+  border: 2px solid var(--color-border);
+  box-shadow: none;
+}
+
+/* Padding */
+.padding-none {
+  padding: 0;
+}
+
+.padding-small {
+  padding: 16px;
+}
+
+.padding-medium {
+  padding: 24px;
+}
+
+.padding-large {
+  padding: 32px;
+}
+
+/* Interactive states */
+.interactive {
+  cursor: pointer;
+  transform-origin: center;
+}
+
+.interactive:hover {
+  transform: translateY(-4px) scale(1.01);
+}
+
+.default.interactive:hover {
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+.glass.interactive:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+.elevated.interactive:hover {
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.16);
+}
+
+.bordered.interactive:hover {
+  border-color: var(--color-primary);
+  box-shadow: 0 4px 20px rgba(var(--color-primary-rgb), 0.15);
+}
+
+.interactive:active {
+  transform: translateY(-2px) scale(1.005);
+}
+
+/* Glow on hover effect */
+.glowOnHover {
+  position: relative;
+}
+
+.glowOnHover::after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(
+    45deg,
+    var(--color-primary),
+    var(--color-secondary),
+    var(--color-primary)
+  );
+  border-radius: 22px;
+  opacity: 0;
+  z-index: -1;
+  transition: opacity 0.3s ease, filter 0.3s ease;
+  filter: blur(10px);
+}
+
+.glowOnHover:hover::after {
+  opacity: 0.6;
+  filter: blur(20px);
+}
+
+/* Content wrapper */
+.content {
+  position: relative;
+  z-index: 1;
+}
+
+/* Liquid border effect */
+.liquidBorder {
+  position: absolute;
+  inset: -1px;
+  border-radius: 20px;
+  padding: 1px;
+  background: linear-gradient(
+    45deg,
+    transparent,
+    var(--color-primary),
+    transparent
+  );
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.liquidBorder::before {
+  content: '';
+  position: absolute;
+  inset: 1px;
+  border-radius: 19px;
+  background: var(--color-surface);
+}
+
+.interactive:hover .liquidBorder {
+  opacity: 0.5;
+  animation: liquidRotate 3s linear infinite;
+}
+
+@keyframes liquidRotate {
+  0% {
+    background: linear-gradient(
+      45deg,
+      transparent,
+      var(--color-primary),
+      transparent
+    );
+  }
+  50% {
+    background: linear-gradient(
+      225deg,
+      transparent,
+      var(--color-secondary),
+      transparent
+    );
+  }
+  100% {
+    background: linear-gradient(
+      45deg,
+      transparent,
+      var(--color-primary),
+      transparent
+    );
+  }
+}
+
+/* Card sections */
+.header {
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--color-border);
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.body {
+  padding: 24px;
+}
+
+.footer {
+  padding: 20px 24px;
+  border-top: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+/* Remove duplicate padding when using sections */
+.card:has(.header, .body, .footer) {
+  padding: 0 !important;
+}
+
+/* Focus styles for accessibility */
+.interactive:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Liquid shimmer effect */
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+.glass::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.1) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 8s ease-in-out infinite;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.glass:hover::after {
+  opacity: 1;
+}

@@ -1,0 +1,296 @@
+.container {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+  max-width: 320px;
+}
+
+.fullWidth {
+  max-width: 100%;
+}
+
+.inputWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  border-radius: 12px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+
+/* Variants */
+.default {
+  background: var(--color-surface);
+  border: 2px solid var(--color-border);
+}
+
+.filled {
+  background: var(--color-surface-secondary);
+  border: 2px solid transparent;
+}
+
+.outlined {
+  background: transparent;
+  border: 2px solid var(--color-border);
+}
+
+/* Sizes */
+.small {
+  min-height: 40px;
+}
+
+.small .input {
+  padding: 8px 12px;
+  font-size: 14px;
+}
+
+.medium {
+  min-height: 48px;
+}
+
+.medium .input {
+  padding: 12px 16px;
+  font-size: 16px;
+}
+
+.large {
+  min-height: 56px;
+}
+
+.large .input {
+  padding: 16px 20px;
+  font-size: 18px;
+}
+
+/* Input field */
+.input {
+  flex: 1;
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--color-text-primary);
+  font-family: inherit;
+  transition: padding 0.2s ease;
+  z-index: 1;
+}
+
+.input::placeholder {
+  color: var(--color-text-secondary);
+  opacity: 0.6;
+}
+
+/* With icons */
+.inputWrapper:has(.startIcon) .input {
+  padding-left: 0;
+}
+
+.inputWrapper:has(.endIcon) .input {
+  padding-right: 0;
+}
+
+.startIcon,
+.endIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 100%;
+  color: var(--color-text-secondary);
+  z-index: 1;
+}
+
+/* Floating label */
+.label {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-text-secondary);
+  font-size: 16px;
+  pointer-events: none;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  background: transparent;
+  padding: 0 4px;
+  z-index: 2;
+}
+
+.inputWrapper:has(.startIcon) .label {
+  left: 48px;
+}
+
+.small .label {
+  font-size: 14px;
+}
+
+.large .label {
+  font-size: 18px;
+}
+
+/* Active state (focused or has value) */
+.active .label,
+.input:focus + .label,
+.input:not(:placeholder-shown) + .label {
+  top: 0;
+  transform: translateY(-50%) scale(0.85);
+  color: var(--color-primary);
+  background: var(--color-surface);
+}
+
+.filled.active .label,
+.filled .input:focus + .label,
+.filled .input:not(:placeholder-shown) + .label {
+  background: var(--color-surface-secondary);
+}
+
+.outlined.active .label,
+.outlined .input:focus + .label,
+.outlined .input:not(:placeholder-shown) + .label {
+  background: var(--color-background);
+}
+
+/* Focus states */
+.inputWrapper:focus-within {
+  border-color: var(--color-primary);
+}
+
+.default:focus-within {
+  box-shadow: 0 0 0 3px rgba(var(--color-primary-rgb), 0.1);
+}
+
+.filled:focus-within {
+  background: var(--color-surface);
+  box-shadow: 0 4px 20px rgba(var(--color-primary-rgb), 0.15);
+}
+
+.outlined:focus-within {
+  box-shadow: 0 0 0 3px rgba(var(--color-primary-rgb), 0.1);
+}
+
+/* Error state */
+.error {
+  border-color: var(--color-error) !important;
+}
+
+.error:focus-within {
+  box-shadow: 0 0 0 3px rgba(var(--color-error-rgb), 0.1) !important;
+}
+
+.error .label {
+  color: var(--color-error);
+}
+
+p.error {
+  margin: 0;
+  color: var(--color-error);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* Hint text */
+.hint {
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-size: 14px;
+}
+
+/* Liquid border effect */
+.liquidBorder {
+  position: absolute;
+  inset: -2px;
+  border-radius: 14px;
+  background: linear-gradient(
+    45deg,
+    var(--color-primary),
+    var(--color-secondary)
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+
+.inputWrapper:focus-within .liquidBorder {
+  opacity: 1;
+  animation: liquidRotate 3s linear infinite;
+}
+
+/* Liquid focus effect */
+.liquidFocus {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--color-primary);
+  transform: translateX(-50%);
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.inputWrapper:focus-within .liquidFocus {
+  width: 100%;
+}
+
+/* Ripple effect on focus */
+@keyframes rippleIn {
+  0% {
+    transform: scale(0);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+.inputWrapper::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(var(--color-primary-rgb), 0.2) 0%,
+    transparent 70%
+  );
+  transform: translate(-50%, -50%) scale(0);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.inputWrapper:focus-within::after {
+  animation: rippleIn 0.6s ease-out;
+}
+
+/* Disabled state */
+.input:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.inputWrapper:has(.input:disabled) {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+/* Autofill styles */
+.input:-webkit-autofill,
+.input:-webkit-autofill:hover,
+.input:-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--color-text-primary);
+  -webkit-box-shadow: 0 0 0px 1000px var(--color-surface) inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+/* Animation for liquid rotation */
+@keyframes liquidRotate {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  100% {
+    filter: hue-rotate(360deg);
+  }
+}
