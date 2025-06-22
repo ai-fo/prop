@@ -1,0 +1,343 @@
+.authPage {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+.backgroundEffects {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.liquidBlob1,
+.liquidBlob2,
+.liquidBlob3 {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.4;
+  animation: liquidMove 30s ease-in-out infinite;
+}
+
+.liquidBlob1 {
+  width: 800px;
+  height: 800px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  top: -400px;
+  right: -200px;
+  animation-delay: 0s;
+}
+
+.liquidBlob2 {
+  width: 600px;
+  height: 600px;
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  bottom: -300px;
+  left: -200px;
+  animation-delay: 10s;
+}
+
+.liquidBlob3 {
+  width: 500px;
+  height: 500px;
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation-delay: 20s;
+}
+
+.authContainer {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.authCard {
+  padding: 2.5rem;
+  background: rgba(255, 255, 255, 0.8) !important;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.authHeader {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.authTitle {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.authSubtitle {
+  color: var(--color-text-secondary);
+  font-size: 1rem;
+}
+
+.authForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.accountTypeSelector {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.accountTypeOption {
+  position: relative;
+  cursor: pointer;
+}
+
+.accountTypeOption input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+}
+
+.accountTypeContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5rem 1rem;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.5);
+  transition: all var(--transition-normal);
+  text-align: center;
+}
+
+.accountTypeOption.active .accountTypeContent,
+.accountTypeOption:hover .accountTypeContent {
+  border-color: var(--color-primary);
+  background: rgba(102, 126, 234, 0.05);
+}
+
+.accountTypeIcon {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.accountTypeLabel {
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: 0.25rem;
+}
+
+.accountTypeDesc {
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.formActions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0.5rem 0;
+}
+
+.rememberMe {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+}
+
+.rememberMe input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+.forgotLink {
+  font-size: 0.875rem;
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: opacity var(--transition-fast);
+}
+
+.forgotLink:hover {
+  opacity: 0.8;
+}
+
+.checkbox {
+  display: flex;
+  align-items: start;
+  gap: 0.5rem;
+  cursor: pointer;
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+}
+
+.checkbox input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  margin-top: 2px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.link {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: opacity var(--transition-fast);
+}
+
+.link:hover {
+  opacity: 0.8;
+  text-decoration: underline;
+}
+
+.error {
+  display: block;
+  color: var(--color-error);
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
+}
+
+.submitButton {
+  width: 100%;
+  margin-top: 0.5rem;
+  justify-content: center;
+}
+
+.divider {
+  position: relative;
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.divider::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.divider span {
+  position: relative;
+  padding: 0 1rem;
+  background: rgba(255, 255, 255, 0.8);
+  color: var(--color-text-secondary);
+  font-size: 0.875rem;
+}
+
+.socialLogin {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.socialButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 0.5rem;
+  background: white;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.socialButton:hover {
+  background: rgba(0, 0, 0, 0.02);
+  border-color: rgba(0, 0, 0, 0.2);
+  transform: translateY(-1px);
+}
+
+.socialIcon {
+  width: 20px;
+  height: 20px;
+}
+
+.authFooter {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+}
+
+.authLink {
+  color: var(--color-primary);
+  text-decoration: none;
+  font-weight: 500;
+  transition: opacity var(--transition-fast);
+}
+
+.authLink:hover {
+  opacity: 0.8;
+  text-decoration: underline;
+}
+
+@keyframes liquidMove {
+  0%, 100% {
+    transform: translate(0, 0) scale(1) rotate(0deg);
+  }
+  33% {
+    transform: translate(100px, -100px) scale(1.1) rotate(120deg);
+  }
+  66% {
+    transform: translate(-50px, 50px) scale(0.9) rotate(240deg);
+  }
+}
+
+@media (max-width: 640px) {
+  .authCard {
+    padding: 2rem 1.5rem;
+  }
+  
+  .accountTypeSelector {
+    grid-template-columns: 1fr;
+  }
+  
+  .socialLogin {
+    grid-template-columns: 1fr;
+  }
+  
+  .liquidBlob1 {
+    width: 400px;
+    height: 400px;
+  }
+  
+  .liquidBlob2 {
+    width: 300px;
+    height: 300px;
+  }
+  
+  .liquidBlob3 {
+    width: 250px;
+    height: 250px;
+  }
+}

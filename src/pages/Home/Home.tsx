@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Hero } from '@shared/ui/Hero';
 import { Card } from '@shared/ui/Card';
 import styles from './Home.module.css';
@@ -34,6 +35,7 @@ const stats = [
 ];
 
 export const Home: React.FC = () => {
+  const navigate = useNavigate();
   return (
     <div className={styles.home}>
       <Hero
@@ -41,8 +43,8 @@ export const Home: React.FC = () => {
         subtitle="La première plateforme dédiée à la vente de propriété intellectuelle d'applications. Vendez ou achetez des applications complètes avec transfert total des droits."
         ctaText="Vendre une Application"
         secondaryCtaText="Explorer le Catalogue"
-        onCtaClick={() => console.log('Vendre clicked')}
-        onSecondaryCtaClick={() => console.log('Explorer clicked')}
+        onCtaClick={() => navigate('/register?seller=true')}
+        onSecondaryCtaClick={() => navigate('/catalog')}
       />
 
       <section className={styles.features}>
@@ -120,7 +122,10 @@ export const Home: React.FC = () => {
           <p className={styles.ctaDescription}>
             Rejoignez des milliers de développeurs qui ont déjà vendu leurs applications sur notre plateforme.
           </p>
-          <button className={styles.ctaButton}>
+          <button 
+            className={styles.ctaButton}
+            onClick={() => navigate('/register')}
+          >
             Commencer Maintenant
           </button>
         </Card>

@@ -9,3 +9,9 @@ export type { CardProps, CardHeaderProps, CardBodyProps, CardFooterProps } from 
 // Input exports
 export { Input } from './Input';
 export type { InputProps } from './Input';
+
+// Badge exports
+export { Badge } from './Badge';
+
+// Hero exports
+export { Hero } from './Hero';

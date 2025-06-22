@@ -1,0 +1,459 @@
+.dashboard {
+  min-height: 100vh;
+  background: var(--color-background);
+  position: relative;
+  overflow: hidden;
+}
+
+.backgroundEffects {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.liquidShape1,
+.liquidShape2 {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.3;
+  animation: liquidFloat 25s ease-in-out infinite;
+}
+
+.liquidShape1 {
+  width: 600px;
+  height: 600px;
+  background: linear-gradient(135deg, #10b981 0%, #34d399 100%);
+  top: -200px;
+  right: -200px;
+}
+
+.liquidShape2 {
+  width: 500px;
+  height: 500px;
+  background: linear-gradient(135deg, #3b82f6 0%, #60a5fa 100%);
+  bottom: -150px;
+  left: -150px;
+  animation-delay: -15s;
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3rem;
+  animation: fadeInDown 0.6s ease-out;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(135deg, #10b981 0%, #3b82f6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.subtitle {
+  color: var(--color-text-secondary);
+  font-size: 1.125rem;
+}
+
+.metricsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.metricCard {
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  background: rgba(255, 255, 255, 0.7) !important;
+  backdrop-filter: blur(10px);
+  transition: transform var(--transition-normal);
+  animation: fadeIn 0.6s ease-out;
+}
+
+.metricCard:hover {
+  transform: translateY(-4px);
+}
+
+.metricIcon {
+  font-size: 2.5rem;
+  animation: float 3s ease-in-out infinite;
+}
+
+.metricContent {
+  flex: 1;
+}
+
+.metricValue {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  line-height: 1;
+  margin-bottom: 0.25rem;
+}
+
+.metricLabel {
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+}
+
+.mainGrid {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 2rem;
+  align-items: start;
+}
+
+.mainSection {
+  animation: fadeIn 0.8s ease-out 0.2s backwards;
+}
+
+.sectionCard {
+  padding: 0;
+  overflow: hidden;
+}
+
+.sectionHeader {
+  padding: 1.5rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sectionTitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.tabs {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.tab {
+  padding: 0.5rem 1rem;
+  background: transparent;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.tab:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.tab.active {
+  background: linear-gradient(135deg, #10b981 0%, #3b82f6 100%);
+  color: white;
+}
+
+.appsGrid {
+  padding: 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5rem;
+}
+
+.appCard {
+  overflow: hidden;
+  transition: transform var(--transition-normal);
+}
+
+.appCard:hover {
+  transform: translateY(-4px);
+}
+
+.appImage {
+  position: relative;
+  height: 180px;
+  margin: -1rem -1rem 0;
+  overflow: hidden;
+}
+
+.appImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.appCard:hover .appImage img {
+  transform: scale(1.05);
+}
+
+.statusBadge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+.appContent {
+  padding: 1.5rem 1rem 1rem;
+}
+
+.appName {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--color-text-primary);
+}
+
+.appDescription {
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+.appMeta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  margin-bottom: 1rem;
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+}
+
+.appSeller {
+  font-weight: 500;
+}
+
+.appDate {
+  opacity: 0.8;
+}
+
+.appActions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.pendingMessage {
+  padding: 1rem;
+  background: rgba(245, 158, 11, 0.1);
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--color-warning);
+  line-height: 1.5;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  animation: fadeIn 0.8s ease-out 0.4s backwards;
+}
+
+.sideCard {
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.7) !important;
+}
+
+.sideTitle {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--color-text-primary);
+}
+
+.savedApps {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.savedApp {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem;
+  background: rgba(0, 0, 0, 0.02);
+  border-radius: 0.5rem;
+  transition: background var(--transition-fast);
+}
+
+.savedApp:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.savedAppImage {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 0.5rem;
+}
+
+.savedAppInfo {
+  flex: 1;
+}
+
+.savedAppName {
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+  color: var(--color-text-primary);
+}
+
+.savedAppPrice {
+  font-size: 0.875rem;
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.transactions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.transaction {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  padding: 0.75rem;
+  background: rgba(0, 0, 0, 0.02);
+  border-radius: 0.5rem;
+}
+
+.transactionInfo {
+  flex: 1;
+}
+
+.transactionApp {
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+  color: var(--color-text-primary);
+}
+
+.transactionDate {
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+}
+
+.transactionAmount {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.25rem;
+}
+
+.transactionAmount span {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.helpSection {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.helpSection p {
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+}
+
+.helpButton {
+  width: 100%;
+  justify-content: center;
+}
+
+@keyframes liquidFloat {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(50px, -50px) scale(1.1);
+  }
+  66% {
+    transform: translate(-30px, 30px) scale(0.9);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@media (max-width: 1200px) {
+  .mainGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .sidebar {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: start;
+    gap: 1rem;
+  }
+  
+  .metricsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .appsGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .tabs {
+    flex-wrap: wrap;
+  }
+}
