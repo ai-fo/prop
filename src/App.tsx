@@ -5,6 +5,7 @@ import { Catalog } from './pages/Catalog';
 import { ApplicationDetail } from './pages/ApplicationDetail';
 import { Login, Register } from './pages/Auth';
 import { SellerDashboard, BuyerDashboard } from './pages/Dashboard';
+import { SellWithGitHub } from './pages/Sell';
 import './App.css';
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
             </Link>
             <div className="nav-links">
               <Link to="/catalog" className="nav-link">Catalogue</Link>
+              <Link to="/sell" className="nav-link">Vendre</Link>
               <Link to="/login" className="nav-link">Connexion</Link>
               <Link to="/register" className="nav-link nav-link-primary">S'inscrire</Link>
             </div>
@@ -28,6 +30,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/catalog" element={<Catalog />} />
           <Route path="/app/:id" element={<ApplicationDetail />} />
+          <Route path="/sell" element={<SellWithGitHub />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/dashboard/seller" element={<SellerDashboard />} />

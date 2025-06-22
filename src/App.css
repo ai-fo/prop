@@ -25,7 +25,7 @@
   font-size: 1.5rem;
   font-weight: 700;
   text-decoration: none;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #003D7A 0%, #1E5A8E 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -50,7 +50,7 @@
 
 .nav-link-primary {
   padding: 0.5rem 1.5rem;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #003D7A 0%, #1E5A8E 100%);
   color: white;
   border-radius: 2rem;
   transition: transform var(--transition-fast), box-shadow var(--transition-fast);
@@ -59,7 +59,7 @@
 .nav-link-primary:hover {
   color: white;
   transform: translateY(-2px);
-  box-shadow: 0 4px 20px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 4px 20px rgba(0, 61, 122, 0.3);
 }
 
 @media (max-width: 768px) {

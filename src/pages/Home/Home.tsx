@@ -43,7 +43,7 @@ export const Home: React.FC = () => {
         subtitle="La première plateforme dédiée à la vente de propriété intellectuelle d'applications. Vendez ou achetez des applications complètes avec transfert total des droits."
         ctaText="Vendre une Application"
         secondaryCtaText="Explorer le Catalogue"
-        onCtaClick={() => navigate('/register?seller=true')}
+        onCtaClick={() => navigate('/sell')}
         onSecondaryCtaClick={() => navigate('/catalog')}
       />
 

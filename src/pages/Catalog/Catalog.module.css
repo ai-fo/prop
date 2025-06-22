@@ -13,7 +13,7 @@
   font-size: clamp(2rem, 5vw, 3rem);
   font-weight: 700;
   margin-bottom: 1rem;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #003D7A 0%, #1E5A8E 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -87,12 +87,12 @@
 }
 
 .categoryButton:hover {
-  background: rgba(102, 126, 234, 0.05);
-  border-color: rgba(102, 126, 234, 0.3);
+  background: rgba(0, 61, 122, 0.05);
+  border-color: rgba(0, 61, 122, 0.3);
 }
 
 .categoryButton.active {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #003D7A 0%, #1E5A8E 100%);
   color: white;
   border-color: transparent;
 }
@@ -112,7 +112,7 @@
   appearance: none;
   width: 16px;
   height: 16px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #003D7A 0%, #1E5A8E 100%);
   border-radius: 50%;
   cursor: pointer;
 }
@@ -120,7 +120,7 @@
 .priceSlider::-moz-range-thumb {
   width: 16px;
   height: 16px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #003D7A 0%, #1E5A8E 100%);
   border-radius: 50%;
   cursor: pointer;
   border: none;
@@ -256,7 +256,7 @@
 
 .tag {
   padding: 0.25rem 0.75rem;
-  background: rgba(102, 126, 234, 0.1);
+  background: rgba(0, 61, 122, 0.1);
   color: var(--color-primary);
   border-radius: 1rem;
   font-size: 0.75rem;

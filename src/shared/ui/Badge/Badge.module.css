@@ -21,14 +21,14 @@
 
 /* Variants */
 .primary {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #003D7A 0%, #1E5A8E 100%);
   color: white;
 }
 
 .secondary {
-  background: rgba(107, 70, 193, 0.1);
+  background: rgba(0, 61, 122, 0.1);
   color: var(--color-secondary);
-  border: 1px solid rgba(107, 70, 193, 0.2);
+  border: 1px solid rgba(0, 61, 122, 0.2);
 }
 
 .success {
